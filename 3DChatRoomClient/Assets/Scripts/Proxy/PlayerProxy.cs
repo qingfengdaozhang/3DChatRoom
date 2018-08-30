@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerProxy:MonoBehaviour
 {
     private static PlayerProxy playerProxy;
-    public PlayerProxy Instance
+    public static PlayerProxy Instance
     {
         get
         {
@@ -17,32 +17,40 @@ public class PlayerProxy:MonoBehaviour
             return playerProxy;
         }
     }
-    private List<Player> players;
+    private List<GameObject> players;
     private PlayerProxy()
     {
-        players = new List<Player>();
+        players = new List<GameObject>();
     }
     //CRUD操作
-    public void AddPlayer(Player player)
+    public void AddPlayer(GameObject player)
     {
         if(!players.Contains(player))
         {
             players.Add(player);
         }
     }
-    public void UpdatePlayerById(Player player)
+    public GameObject SelectPlayerById(int id)
     {
-        Player pl = players.Find(x=>x.ID==player.ID);
-        pl = player;
-    }
-    public Player SelectPlayerById(int id)
-    {
-        Player player = players.Find(x => x.ID == id);
+        GameObject player = players.Find(x => x.GetComponent<Player>().ID == id);
         return player;
     }
     public void DelectPlayerById(int id)
     {
-        Player player = players.Find(x => x.ID == id);
+        GameObject player = players.Find(x => x.GetComponent<Player>().ID == id);
         players.Remove(player);
+    }
+    public void UpdateTransform(int id,Vector3 position,Vector3 eulerAngles)
+    {
+        SelectPlayerById(id).transform.position = position;
+        SelectPlayerById(id).transform.eulerAngles = eulerAngles;
+    }
+    public void UpdateNickName(int id,string nickname)
+    {
+        SelectPlayerById(id).GetComponent<Player>().NickName.text = nickname;
+    }
+    public void UpdateWord(int id, string word)
+    {
+        SelectPlayerById(id).GetComponent<Player>().Context.text = word;
     }
 }

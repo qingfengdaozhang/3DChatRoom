@@ -26,11 +26,11 @@ public class UserProxy:MonoBehaviour
     {
         user = new User();
     }
-    public void Update(User user)
+    public void UpdateUser(User user)
     {
         this.user = user;
     }
-    public void Update(string nickname)
+    public void UpdateNickName(string nickname)
     {
         user.NickName = nickname;
     }

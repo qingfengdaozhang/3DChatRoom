@@ -14,7 +14,14 @@ public class AppFacade:MonoBehaviour
         Instance = this;
         controller = new Controller();
         view = new View();
-        this.ResierView(new UIMediator());
+
+        PeopleCommand peopleCommand = new PeopleCommand();
+        RestierCommand("Create", peopleCommand);
+        RestierCommand("Move", peopleCommand);
+        RestierCommand("ShowNickName", peopleCommand);
+        RestierCommand("ChattingWord", peopleCommand);
+
+        //this.ResierView(new UIMediator());
     }
 
     public void ResierView(Mediator mediator)

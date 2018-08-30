@@ -19,8 +19,7 @@ public class UIMediator : Mediator
         get
         {
             List<string> msgList = new List<string>();
-            msgList.Add("UpdateGameButtonUIView");
-            msgList.Add("UpdateSaveButtonUIView");
+            msgList.Add("UpdateMainUIView");
             return msgList;
         }
     }
@@ -29,9 +28,7 @@ public class UIMediator : Mediator
     {
         switch(inofifier.msg)
         {
-            case "UpdateGameButtonUIView":
-                break;
-            case "UpdateSaveButtonUIView":
+            case "UpdateMainUIView":
                 break;
         }
     }
